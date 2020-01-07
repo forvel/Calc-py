@@ -1,6 +1,18 @@
 from tkinter import *
-
+def addText():
+    
+    pass
+def calc(op):
+    num1 = int(entNumber1.get())
+    num2 = int(entNumber2.get())
+    if op == "+":
+        res = num1+num2 
+        entResult.insert(0,str(res))
+    #elif op = "-":
+        
+    
 root = Tk()
+
 root.title("Калькулятор")
 root.grid_rowconfigure(7, weight=1)
 root.grid_columnconfigure(4, weight=1)
@@ -20,15 +32,26 @@ lblResult.grid(row = 2, column = 0, columnspan = 2, sticky = W)
 entResult = Entry(root, width = 13, justify = RIGHT)
 entResult.grid(row = 2, column = 2, columnspan = 2, sticky = E, padx=2)
 
+#stack = []
+#stack.append(something) - положить элемент на вершину
+#sign = stack.pop() - вернуть верхний элемент
+
+
 btnList =   (
             ('7','8','9','/'),
             ('4','5','6','*'),
             ('1','2','3','-'),
-            ('0',',','+','=')
+            ('0',',','=','+')
             )
 for i in range(4):
     for j in range(4):
-        btn = Button (root,text = btnList[i][j],width = 5)
-        btn.grid(row = i+3, column = j,padx=2,pady=2)
+        
+        if j == 3:
+            btn = Button (root,text = btnList[i][j],width = 5, command = lambda x=btnList[i][j]: calc(x))
+            btn.grid(row = i+3, column = j,padx=2,pady=2)
+            #btn.bind(,)
+        else:
+            btn = Button (root,text = btnList[i][j],width = 5, command = addText)
+            btn.grid(row = i+3, column = j,padx=2,pady=2)
 root.mainloop()
 
