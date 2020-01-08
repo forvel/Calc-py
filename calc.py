@@ -1,15 +1,27 @@
 from tkinter import *
+from tkinter import messagebox as mb
+
 def addText():
     
     pass
 def calc(op):
     num1 = int(entNumber1.get())
     num2 = int(entNumber2.get())
+    entResult.delete(0,END)
     if op == "+":
         res = num1+num2 
         entResult.insert(0,str(res))
-    #elif op = "-":
-        
+    elif op == "-":
+        res = num1-num2 
+        entResult.insert(0,str(res))
+    elif op == "*":
+        res = num1*num2 
+        entResult.insert(0,str(res))
+    elif op == "/":
+        res = num1/num2 
+        entResult.insert(0,str(res))
+    else:
+        mb.showerror("Ошибка", "Нужно выбрать знак арифметической операции")
     
 root = Tk()
 
@@ -32,24 +44,18 @@ lblResult.grid(row = 2, column = 0, columnspan = 2, sticky = W)
 entResult = Entry(root, width = 13, justify = RIGHT)
 entResult.grid(row = 2, column = 2, columnspan = 2, sticky = E, padx=2)
 
-#stack = []
-#stack.append(something) - положить элемент на вершину
-#sign = stack.pop() - вернуть верхний элемент
-
-
 btnList =   (
             ('7','8','9','/'),
             ('4','5','6','*'),
             ('1','2','3','-'),
             ('0',',','=','+')
             )
+
 for i in range(4):
     for j in range(4):
-        
         if j == 3:
             btn = Button (root,text = btnList[i][j],width = 5, command = lambda x=btnList[i][j]: calc(x))
             btn.grid(row = i+3, column = j,padx=2,pady=2)
-            #btn.bind(,)
         else:
             btn = Button (root,text = btnList[i][j],width = 5, command = addText)
             btn.grid(row = i+3, column = j,padx=2,pady=2)
