@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import messagebox as mb
+
 
 def addText():
     
@@ -21,7 +21,7 @@ def calc(op):
         res = num1/num2 
         entResult.insert(0,str(res))
     else:
-        mb.showerror("Ошибка", "Нужно выбрать знак арифметической операции")
+        #mb.showerror("Ошибка", "Нужно выбрать знак арифметической операции")
     
 root = Tk()
 
